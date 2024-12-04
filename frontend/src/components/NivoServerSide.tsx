@@ -4,6 +4,7 @@ import { pizzaSalesData } from '../data/pizzaSales';
 import { DateSelector } from './DateSelector';
 import { PizzaSelector } from './PizzaSelector';
 import { format, parse } from 'date-fns';
+import { Download } from 'lucide-react';
 
 interface ChartData {
   id: string;
@@ -86,6 +87,24 @@ const NivoServerSide = () => {
       });
   }, [filteredData]);
 
+
+  const handleGeneratePdf = () => {
+    axios.post(`http://localhost:3000/generate-pdf`, {
+      id: chartData?.id
+    }, { responseType: 'blob' })
+      .then((response) => {
+        const url = window.URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'chart.pdf';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <div className="max-w-4xl mx-auto pt-6">
       <h1 className="text-3xl font-bold mb-4">Server Side Chart</h1>
@@ -101,6 +120,13 @@ const NivoServerSide = () => {
         onTogglePizza={handleTogglePizza}
         onColorChange={handleColorChange}
       />
+            <button 
+        onClick={handleGeneratePdf} 
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        <Download size={20} className="mr-2" />
+        Generate PDF
+      </button>
       <div className="bg-white rounded-lg shadow-lg p-6">
         {chartData && <img src={`http://localhost:3001/render/${chartData.id}`} alt="Chart" />}
       </div>
