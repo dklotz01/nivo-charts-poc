@@ -51,6 +51,6 @@ server.get('/render/:id', (req, res) => {
   res.set('content-type', 'image/svg+xml').status(200).send(rendered);
 });
 
-server.listen(3000, () => {
-  console.log('Server started on port 3000');
+server.listen(3001, () => {
+  console.log('Server started on port 3001');
 });

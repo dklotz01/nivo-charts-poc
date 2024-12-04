@@ -75,7 +75,7 @@ const NivoServerSide = () => {
   );
 
   useEffect(() => {
-    axios.post('http://localhost:3000/chart', {
+    axios.post('http://localhost:3001/chart', {
       data: filteredData,
     })
       .then((response) => {
@@ -102,7 +102,7 @@ const NivoServerSide = () => {
         onColorChange={handleColorChange}
       />
       <div className="bg-white rounded-lg shadow-lg p-6">
-        {chartData && <img src={`http://localhost:3000/render/${chartData.id}`} alt="Chart" />}
+        {chartData && <img src={`http://localhost:3001/render/${chartData.id}`} alt="Chart" />}
       </div>
     </div>
   );

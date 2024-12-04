@@ -13,7 +13,7 @@ To run this project, follow these steps:
 1. Clone the repository to your local machine.
 2. Navigate to the project directory in your terminal.
 3. Run the command `yarn dev` to start the frontend and backend servers.
-4. Open your web browser and navigate to `http://localhost:3000` to view the frontend application.
+4. Open your web browser and navigate to `http://localhost:3001` to view the frontend application.
 
 ## Features
 

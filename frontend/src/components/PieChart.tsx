@@ -46,6 +46,10 @@ export const PieChart = ({ data }: PieChartProps) => (
           symbolShape: 'circle',
         },
       ]}
+      onClick={ (event) => {
+        console.log(event.id);
+        window.open("https://www.google.com/search?q=" + event.id);
+      }}
     />
   </div>
 );
