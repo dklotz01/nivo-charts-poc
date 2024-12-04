@@ -89,7 +89,7 @@ const NivoServerSide = () => {
 
 
   const handleGeneratePdf = () => {
-    axios.post(`http://localhost:3000/generate-pdf`, {
+    axios.post(`http://localhost:3001/generate-pdf`, {
       id: chartData?.id
     }, { responseType: 'blob' })
       .then((response) => {
